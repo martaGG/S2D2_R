@@ -1,31 +1,25 @@
 # S2D2: Small-scale Significant DBSCAN Detection
 
-Python3 code for the detection of small pristine structure with 3-sigma significance associated to position/velocity of stars (or young stellar objects) in starForming Regions. Developed under the SFM (StarFormMapper) EU project.
+R code for the detection of small pristine structure with 3-sigma significance associated to position/velocity of stars (or young stellar objects) in starForming Regions. Developed under the SFM (StarFormMapper) EU project.
 
 S2D2 uses DBSCAN detect the smallest significant structure in a spatial/spatial-kinematic space. The procedure proposes, in structured regions, calculation of the epsilon and Nmin parameters (as described in our paper REFS!!) for DBSCAN to retrieve the smallest structures in the region with a 3-sigma level of significance. If the region is not structured, or the user wants it, eps and Nmin can be supplied, and Dbscan will be performed with these parameters, without, however, guaranteeing any level of significance.
 
 Usage example:
+
 ```
-python3 main.py --fname data/inputExample.yaml 
+> source('main.R')
 ```
 
 ## Input
 
-yaml file with a dictionary containing the input parameters. Must be provided after the call to main.py with --fname
-
-Example call:
-```
-python3 main.py --fname data/inputExample.yaml 
-```
+csv file with a table containing the input parameters. Must be provided in the adress hardcoded in main.R
 
 Example file content:
 ```
 {
-  filename: './data/Frac1p6_1_RADEC.dat',
-  dim: 2,
-  coord: 'Ra Dec',
-  eps: 'None',
-  Nmin: 'None'
+filename, dim, coord, eps, Nmin, Qlim
+Taurus_RaDec.csv,2,Ra Dec,,, 0.7
+
 }
 ```
 
@@ -33,7 +27,7 @@ Example file content:
 
 #### filename
 Path for file with coordinates of stars/objects in your region.
-V0: Ascii file with header and tab delimiter
+V0: csv file with the coordinates, assumed to be (RA, DEC) in degrees.
 
 #### dim
 Dimension of the space of search.
@@ -43,31 +37,26 @@ Future: limited options ('2D','3D','2+2D', '3+2D'...)
 #### coord
 Coordinate frame of the input, depending on the dimension
 ##### 2D
-V0: 'Ra, Dec'
-Future: 'l,b'
+V0: 'Ra Dec' (without apostrophes)
 
 #### eps
 Scale parameter supplied to DBSCAN, associated with the size of the structures to search.
-Default: 'None' to search for the smallest scale in structured regions.
+Default: empty field to search for the smallest scale in structured regions.
 If a float eps is supplied, Nmin must also be supplied.
 
 
 #### Nmin
 Number of points supplied to DBSCAN, associated with the density of a neighbourhood with radius eps.
-Default: 'None' to calculate the Nmin guaranteeing 3 sigma significance.
+Default:empty field to calculate the Nmin guaranteeing 3 sigma significance.
 If an integer Nmin is supplied, eps must also be supplied.
 
 ## Output
 Ascii file named as the input file with the extension .out containing the coordinates of each star in the region (in RA, DEC) and an additional column with an integer representing the number of substructure assigned. The value -1 represents noise stars (those not assigned to any cluster).
 
 ## Requirements
-Python3 with libraries:
-	astropy
-	numpy
-	scipy
-	scikit.learn
-	yaml
-    argparse
+R with libraries:
+	fpc
+	astrolibR
 ## Description
 
 ### 2D
@@ -94,7 +83,7 @@ We run scikit.learn’s DBSCAN for the previously calculated eps and Nmin.
 If the Q parameter is larger than 0.7, and the user has not supplied an eps and Nmin, we display an error message (we cannot guarantee that the region is structured), and suggest the user to try the procedure providing eps and Nmin.
 
 #### DBSCAN detection
-We run scikit.learn’s DBSCAN for the user defined eps and Nmin.
+We run fpc package DBSCAN for the user defined eps and Nmin.
 
 ## Acknowledging this
 Please cite (SFM, our paper, REF!!) if you use this code. 

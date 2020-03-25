@@ -16,11 +16,8 @@ csv file with a table containing the input parameters. Must be provided in the a
 
 Example file content:
 ```
-{
 filename, dim, coord, eps, Nmin, Qlim
 Taurus_RaDec.csv,2,Ra Dec,,, 0.7
-
-}
 ```
 
 ### Input parameters

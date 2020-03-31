@@ -2,7 +2,7 @@
 
 R code for the detection of small pristine structure with 3-sigma significance associated to position/velocity of stars (or young stellar objects) in starForming Regions. Developed under the SFM (StarFormMapper) EU project.
 
-S2D2 uses DBSCAN detect the smallest significant structure in a spatial/spatial-kinematic space. The procedure proposes, in structured regions, calculation of the epsilon and Nmin parameters (as described in our paper REFS!!) for DBSCAN to retrieve the smallest structures in the region with a 3-sigma level of significance. If the region is not structured, or the user wants it, eps and Nmin can be supplied, and Dbscan will be performed with these parameters, without, however, guaranteeing any level of significance.
+S2D2 uses DBSCAN detect the smallest significant structure in a spatial/spatial-kinematic space. The procedure proposes, in structured regions, calculation of the epsilon and Nmin parameters (as described in González et al., 2020) for DBSCAN to retrieve the smallest structures in the region with a user defined level of significance. If the region is not structured, or the user wants it, eps and Nmin can be supplied, and Dbscan will be performed with these parameters, without, however, guaranteeing any level of significance.
 
 Usage example:
 
@@ -17,7 +17,7 @@ csv file with a table containing the input parameters. Must be provided in the a
 Example file content:
 ```
 filename, dim, coord, eps, Nmin, Qlim, signif
-Taurus_RaDec.csv,2,Ra Dec,,, 0.7,
+Taurus_RaDec.csv,2,Ra Dec,,, 0.7,99.85
 ```
 
 ### Input parameters
@@ -74,6 +74,7 @@ R with libraries:
 	- astrolibR
 	- stats
 	- viridis
+	
 ## Description
 
 ### 2D

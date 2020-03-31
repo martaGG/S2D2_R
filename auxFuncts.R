@@ -55,9 +55,9 @@ paramQ<- function(distMatrix){
   np=length(distMatrix[,1])
   ms<-MstDist(distMatrix)
   mdMST<-mean(ms$d)
-  print(mdMST)
+  #print(mdMST)
   mbar=mdMST/(sqrt(area*np)/(np-1))
-  print(mbar)
+  #print(mbar)
   
   q=mbar/sbar
   
@@ -89,8 +89,8 @@ eps<-mean(r[c(indi[1], indi[1]+1)])
 return(eps)
 }
 
-calculateNmin2D<-function(nn1,rho, eps){
-  alpha=99.85
+calculateNmin2D<-function(nn1,rho, eps, signif){
+  alpha=signif
   tol=1.e-5
 
     P_val <- 1-alpha/100
@@ -105,10 +105,10 @@ calculateNmin2D<-function(nn1,rho, eps){
     # while(Test_P_val >= P_val){  
     while((Test_P_val -P_val)>tol){
       k<-k+1 
-      print('npoints')
-      print(k)
+      #print('npoints')
+      #print(k)
       Test_P_val <- CumuNNEmpir_RandTheo_seq_val(eps,rseq1,k,rho,2)
-      print(Test_P_val)
+      #print(Test_P_val)
     }
     Nmin <-k + 1
   return(Nmin)

@@ -23,13 +23,14 @@ Taurus_RaDec.csv,2,Ra Dec,,, 0.7,
 ### Input parameters
 
 #### filename
-Path for file with coordinates of stars/objects in your region.
-V0: csv file with the coordinates: See options and expected values in coord parameter section.
+Path for file with coordinates of stars/objects in your region. Uploaded 2D example file with Taurus coordinates.
+
+V1: csv file with the coordinates: See options and expected values in the coord parameter section.
 
 #### dim
 Dimension of the space of search.
-V0: Integer, only=2.
-Future: limited options ('2D','3D','2+2D', '3+2D'...)
+-V1: Integer, only=2.
+-Future: limited options ('2D','3D','2+2D', '3+2D'...)
 
 #### coord
 Coordinate frame of the input, depending on the dimension. Cannot be left empty.
@@ -39,14 +40,17 @@ Coordinate frame of the input, depending on the dimension. Cannot be left empty.
 
 #### eps
 Scale parameter supplied to DBSCAN, associated with the size of the structures to search.
-Default: empty field to search for the smallest scale in structured regions.
-If a float eps is supplied, Nmin must also be supplied.
+
+- Default: empty field to search for the smallest scale in structured regions.
+- If a float eps is supplied, Nmin must also be supplied.
 
 
 #### Nmin
 Number of points supplied to DBSCAN, associated with the density of a neighbourhood with radius eps.
-Default:empty field to calculate the Nmin guaranteeing  the required significance (see parameter signif).
-If an integer Nmin is supplied, eps must also be supplied.
+
+-Default:empty field to calculate the Nmin guaranteeing  the required significance (see parameter signif).
+
+-If an integer Nmin is supplied, eps must also be supplied.
 
 #### Qlim
 limit of Q parameter for automated eps and Nmin value
@@ -55,18 +59,19 @@ limit of Q parameter for automated eps and Nmin value
 If float, user supplied value (in percentage) required for structure retrieval
 If empty or invalid, default strict value, 99.85 (>3 sigma).
 ## Output
-Ascii file named as the input file with the extension .out containing the coordinates of each star in the region (in the  user supplied values) and an additional column with an integer representing the number of substructure assigned. Indexes follow the R convention,so the value 0 represents noise stars (those not assigned to any cluster).
+-Console outputs some values of variables and status 
+-Ascii file named as the input file with the extension .out containing the coordinates of each star in the region (in the  user supplied values) and an additional column with an integer representing the number of substructure assigned. Indexes follow the R convention,so the value 0 represents noise stars (those not assigned to any cluster).
 
-pdf file named as the input file with the extension .pdf with a plot of the region where:
+-pdf file named as the input file with the extension .pdf with a plot of the region where:
   - grey stars are noise.
   - stars in significant structures are overplotted in colour. Each nest will be plotted in a different colour taken from a viridis colour table with as many different shades as NESTs, so the specific colours will depend on the amount of structures retrieved. 
 
 ## Requirements
 R with libraries:
-	fpc
-	astrolibR
-	stats
-	viridis
+	-fpc
+	-astrolibR
+	-stats
+	-viridis
 ## Description
 
 ### 2D
@@ -100,8 +105,9 @@ Please cite Gonzalez et al 2020 if you use this code.
 ## References
 
 To be completed
-Cartwright & Withworth, 2003
-Joncour et al. 2017
-González et al 2020.
+-Cartwright & Withworth, 2003
+-González et al 2020.
+-Joncour et al. 2017
+-Joncour et al. 2018
 
 

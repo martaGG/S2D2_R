@@ -29,8 +29,8 @@ V1: csv file with the coordinates: See options and expected values in the coord 
 
 #### dim
 Dimension of the space of search.
--V1: Integer, only=2.
--Future: limited options ('2D','3D','2+2D', '3+2D'...)
+- V1: Integer, only=2.
+- Future: limited options ('2D','3D','2+2D', '3+2D'...)
 
 #### coord
 Coordinate frame of the input, depending on the dimension. Cannot be left empty.

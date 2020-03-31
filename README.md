@@ -34,9 +34,9 @@ Dimension of the space of search.
 
 #### coord
 Coordinate frame of the input, depending on the dimension. Cannot be left empty.
-##### 2D
-- 'Ra Dec' (without apostrophes) for great circle distance, assuming right ascension and declination in degrees.
-- any other string will calculate the euclidean distance
+- 2D
+  - 'Ra Dec' (without apostrophes) for great circle distance, assuming right ascension and declination in degrees.
+  - any other string will calculate the euclidean distance
 
 #### eps
 Scale parameter supplied to DBSCAN, associated with the size of the structures to search.
@@ -61,19 +61,19 @@ We note that the classical limit Q parameter for structured regions is 0.8, and 
 If float, user supplied value (in percentage) required for structure retrieval
 If empty or invalid, default strict value, 99.85 (>3 sigma).
 ## Output
--Console outputs some values of variables and status 
--Ascii file named as the input file with the extension .out containing the coordinates of each star in the region (in the  user supplied values) and an additional column with an integer representing the number of substructure assigned. Indexes follow the R convention,so the value 0 represents noise stars (those not assigned to any cluster).
+- Console outputs some values of variables and status 
+- Ascii file named as the input file with the extension .out containing the coordinates of each star in the region (in the  user supplied values) and an additional column with an integer representing the number of substructure assigned. Indexes follow the R convention,so the value 0 represents noise stars (those not assigned to any cluster).
 
--pdf file named as the input file with the extension .pdf with a plot of the region where:
+- pdf file named as the input file with the extension .pdf with a plot of the region where:
   - grey stars are noise.
   - stars in significant structures are overplotted in colour. Each nest will be plotted in a different colour taken from a viridis colour table with as many different shades as NESTs, so the specific colours will depend on the amount of structures retrieved. 
 
 ## Requirements
 R with libraries:
-	-fpc
-	-astrolibR
-	-stats
-	-viridis
+	- fpc
+	- astrolibR
+	- stats
+	- viridis
 ## Description
 
 ### 2D
@@ -107,9 +107,9 @@ Please cite Gonzalez et al 2020 if you use this code.
 ## References
 
 To be completed
--Cartwright & Withworth, 2003
--González et al 2020.
--Joncour et al. 2017
--Joncour et al. 2018
+- Cartwright & Withworth, 2003
+- González et al 2020.
+- Joncour et al. 2017
+- Joncour et al. 2018
 
 

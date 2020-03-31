@@ -53,7 +53,9 @@ Number of points supplied to DBSCAN, associated with the density of a neighbourh
 -If an integer Nmin is supplied, eps must also be supplied.
 
 #### Qlim
-limit of Q parameter for automated eps and Nmin value
+limit of Q parameter for considering a region structured, and calculate automatically the eps and Nmin values according to the procedure, as described in González et al. 2020.
+
+We note that the classical limit Q parameter for structured regions is 0.8, and that a conservative limit of 0.7 avoids the possibility of analyising a region withous structure (as described in Gonzalez et al. 2020)
 
 #### signif
 If float, user supplied value (in percentage) required for structure retrieval
@@ -78,14 +80,14 @@ R with libraries:
 We refer to Gonzalez et al. 2020 and references therein for a complete description of the procedure.
 
 ### Structured regions
-We will consider that a starForming region is structured when the Q parameter (Cartwright & Whitworth, 2003) is lower than 0.8, as usually . 
-In that case, and if the user has not provided eps and Nmin (default) we propose our procedure to calculate them and obtain the smallest scale significant structure in the region.
+We will consider that a starForming region is structured when the Q parameter (Cartwright & Whitworth, 2003) is lower than the user supplied limit. 
+In that case, and if the user has not provided eps and Nmin (default) we use our procedure to calculate them and obtain the smallest scale significant structure in the region.
 
 #### eps calculation: Small-scale
 We calculate the length scale for DBSCAN (epsilon) using the One point correlation function, OPCF (Joncour et al. 2017) , comparing the first nearest neighbour distance distribution of the sample with the first nearest neighbour distance distribution of a homogeneous random distribution (CSR, or complete spatial randomness) with intensity equal to the local density derived from the mean of the 6th neighbour distribution of the sample.
 
 #### Nmin calculation: Significance
-We iteratively calculate the significance of a structure of that scale and a fixed number of points k until we reach 3-sigma significance (~99.85%). The significance of a structure of size eps and k points, as described in Joncour et al 2018, is given by the the probability of having k-1 nearest neighbours in an eps neighbourhood under a homogeneous random distribution with intensity rho.
+We iteratively calculate the significance of a structure of that scale and a fixed number of points k until we reach the significance value provided by the reader. The significance of a structure of size eps and k points, as described in Joncour et al 2018, is given by the the probability of having k-1 nearest neighbours in an eps neighbourhood under a homogeneous random distribution with intensity rho.
 
 #### DBSCAN detection
 
@@ -94,7 +96,7 @@ We run scikit.learn’s DBSCAN for the previously calculated eps and Nmin.
 
 ### Unstructured regions
 
-If the Q parameter is larger than 0.7, and the user has not supplied an eps and Nmin, we display an error message (we cannot guarantee that the region is structured), and suggest the user to try the procedure providing eps and Nmin.
+If the Q parameter is larger than Qlim, and the user has not supplied an eps and Nmin, we display an error message (we cannot guarantee that the region is structured), and suggest the user to try the procedure providing eps and Nmin.
 
 #### DBSCAN detection
 We run fpc package DBSCAN for the user defined eps and Nmin.

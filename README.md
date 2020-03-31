@@ -48,9 +48,9 @@ Scale parameter supplied to DBSCAN, associated with the size of the structures t
 #### Nmin
 Number of points supplied to DBSCAN, associated with the density of a neighbourhood with radius eps.
 
--Default:empty field to calculate the Nmin guaranteeing  the required significance (see parameter signif).
+- Default:empty field to calculate the Nmin guaranteeing  the required significance (see parameter signif).
 
--If an integer Nmin is supplied, eps must also be supplied.
+- If an integer Nmin is supplied, eps must also be supplied.
 
 #### Qlim
 limit of Q parameter for considering a region structured, and calculate automatically the eps and Nmin values according to the procedure, as described in González et al. 2020.
